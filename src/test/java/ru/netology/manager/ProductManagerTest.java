@@ -39,7 +39,8 @@ class ProductManagerTest {
 
     @BeforeEach
     public void addAllItemsToRepository() {
-                // add all books to repository
+
+        // add all books to repository
         for (int i = 0; i < list_of_books.length; i++) {
             manager.add(list_of_books[i]);
         }
@@ -58,6 +59,8 @@ class ProductManagerTest {
         Smartphone[] actualPhone = new Smartphone[list_of_phones.length];
         int j = 0;
         int k = 0;
+
+        // why do you need k ?
         for (int i = 0; i < actual.length; i++) {
             if (actual[i] instanceof Book) {
                 actualBook[j] = (Book) actual[i];
@@ -73,11 +76,23 @@ class ProductManagerTest {
 
     @Test
     public void shouldSearchByText() {
- //       Product[] product =   new Product[3];
-//             product =  manager.searchByText("Mark Twain");
-//             System.out.println(product[1]);
 
+        Product[] expected = new Book[] {
+            new Book(7, "The adventures of Tom Soyer", 1200, "Mark Twain"),
+            new Book(10, "The adventures of Heckleberry Finn", 120, "Mark Twain"),
+            new Book(11, "Life of the Mississippi", 350, "Mark Twain")
+        };
 
+        Product[] found_products =  manager.searchByText("Mark Twain");
+
+        for (Product product_item : found_products) {
+            System.out.println(product_item.getName());
+            System.out.println(product_item.getPrice());
+        }
+
+        assertArrayEquals(expected, found_products);
     }
+
+
 
 }

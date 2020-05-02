@@ -27,16 +27,6 @@ public class ProductManager {
         return result;
     }
 
-//    public Product[] getLastAdded() {
-//        Product[] products = getAll();
-//        int count = Math.min(products.length, this.maxProduct);
-
-//        Product[] result = new Product[count];
-//        System.arraycopy(products, 0, result, 0, count);
-
-//        return result;
-//    }
-
     public void removeById(int id) {
         productRepository.removeById(id);
     }
@@ -50,15 +40,25 @@ public class ProductManager {
     }
 
     public Product[] searchByText(String text) {
-        Product[] result = new Product[0];
+
+        int count_matches = 0;
+
         for (Product product : productRepository.findAll()) {
             if (matches(product, text)) {
-                Product[] tmp = new Product[result.length + 1];
-                System.arraycopy(result, 0, tmp, 0,result.length + 1 );
-                tmp[tmp.length - 1] = product;
-                result = tmp;
+                count_matches = count_matches + 1;
             }
         }
+
+        Product[] result = new Product[count_matches];
+
+        int idx = 0;
+        for (Product product : productRepository.findAll()) {
+            if (matches(product, text)) {
+                result[idx] = product;
+                idx = idx + 1;
+            }
+        }
+
         return result;
     }
 
@@ -87,6 +87,5 @@ public class ProductManager {
         } else
             return false;
     }
-
 
 }
