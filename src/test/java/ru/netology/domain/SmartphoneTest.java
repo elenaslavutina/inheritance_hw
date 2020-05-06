@@ -27,9 +27,19 @@ class SmartphoneTest {
         }
         ;
         assertEquals(count, index);
-    }
+    };
 
-    ;
+    @Test
+    public void shouldCallProductMatchesIfNameExist() {
+        String text = "Galaxy 9";
+        int count = 1;
+        int index = 0;
+        for (Smartphone phone : list_of_phones) {
+            if (phone.matches(text)) index++;
+        }
+        ;
+        assertEquals(count, index);
+    };
 
     @Test
     public void shouldNotFindIfCompanyNotExist() {
