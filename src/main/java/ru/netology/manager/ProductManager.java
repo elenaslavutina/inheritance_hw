@@ -15,17 +15,6 @@ public class ProductManager {
     public void add(Product item) {
         productRepository.save(item);
     }
-
-/*    public Product[] getAll() {
-        Product[] items = productRepository.findAll();
-        Product[] result = new Product[items.length];
-        for (int i = 0; i < result.length; i++) {
-            int index = items.length - i - 1;
-            result[i] = items[index];
-        }
-        return result;
-    }
-*/
     public void removeById(int id) {
         productRepository.removeById(id);
     }
