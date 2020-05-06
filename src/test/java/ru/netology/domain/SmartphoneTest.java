@@ -6,35 +6,40 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SmartphoneTest {
 
+    private Smartphone[] list_of_phones = new Smartphone[]{
+            new Smartphone(1, "Galaxy 10", 25000, "Samsung"),
+            new Smartphone(1, "Galaxy 8", 20000, "Samsung"),
+            new Smartphone(1, "Galaxy 9", 21000, "Samsung"),
+            new Smartphone(1, "iPhone 6", 25000, "iPhone"),
+            new Smartphone(1, "iPhone 7", 25000, "iPhone"),
+            new Smartphone(1, "12345", 15000, "Huawei"),
+            new Smartphone(1, "123410", 13000, "Huawei"),
+
+    };
+
     @Test
-    public void shouldHaveAllFieldsAndMethodFromSuperClass() {
-        Smartphone phone = new Smartphone();
-
-    }
-
-    @Test
-    public void shouldCastFromBaseClass() {
-        Product product = new Smartphone();
-        if (product instanceof Smartphone) {
-            Smartphone phone = (Smartphone) product;
-
+    public void shouldFindIfCompanyExist() {
+        String text = "Samsung";
+        int count = 3;
+        int index = 0;
+        for (Smartphone phone : list_of_phones) {
+            if (phone.matches(text)) index++;
         }
+        ;
+        assertEquals(count, index);
     }
 
-    @Test
-    public void shouldNotCastToDifferentClass() {
-        Product product = new Smartphone();
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            book.setAuthor("Mark Twain");
-        } else
-           return;
-    }
+    ;
 
     @Test
-    public void shouldUseOverridedMethod() {
-        Product product = new Smartphone();
-        // Вопрос к аудитории: чей метод вызовется?
-        product.toString();
+    public void shouldNotFindIfCompanyNotExist() {
+        String text = "Nokia";
+        int count = 0;
+        int index = 0;
+        for (Smartphone phone : list_of_phones) {
+            if (phone.matches(text)) index++;
+        }
+        ;
+        assertEquals(count, index);
     }
 }

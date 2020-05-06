@@ -52,7 +52,7 @@ class ProductManagerTest {
     }
 
     @Test
-    public void shouldAddAllProductsToRepository() {
+    public void shouldSortProductsByClass() {
 
         Product[] actual = repository.findAll();
         Book[] actualBook = new Book[list_of_books.length];
@@ -84,15 +84,7 @@ class ProductManagerTest {
         };
 
         Product[] found_products =  manager.searchByText("Mark Twain");
-
-        for (Product product_item : found_products) {
-            System.out.println(product_item.getName());
-            System.out.println(product_item.getPrice());
-        }
-
         assertArrayEquals(expected, found_products);
     }
-
-
 
 }

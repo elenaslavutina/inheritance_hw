@@ -21,13 +21,14 @@ public class Smartphone extends Product {
     public void setCompany(String company) {
         this.company = company;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Smartphone phone = (Smartphone) o;
-        return  Objects.equals(company, phone.company);
+        return Objects.equals(company, phone.company);
     }
 
     @Override
@@ -38,8 +39,14 @@ public class Smartphone extends Product {
     @Override
     public String toString() {
         return "Smartphone{" +
-                ", company=" + company+"}";
+                ", company=" + company + "}";
     }
 
+    @Override
+    public boolean matches(String search) {
+        if (super.matches(search))
+            return true;
+        return (this.getCompany().equalsIgnoreCase(search));
+    }
 
 }
