@@ -6,7 +6,7 @@ import ru.netology.domain.Book;
 import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
-    private ProductRepository productRepository = new ProductRepository();
+    private ProductRepository productRepository;
 
     public ProductManager(ProductRepository repository) {
         this.productRepository = repository;
@@ -16,7 +16,7 @@ public class ProductManager {
         productRepository.save(item);
     }
 
-    public Product[] getAll() {
+/*    public Product[] getAll() {
         Product[] items = productRepository.findAll();
         Product[] result = new Product[items.length];
         for (int i = 0; i < result.length; i++) {
@@ -25,41 +25,26 @@ public class ProductManager {
         }
         return result;
     }
-
+*/
     public void removeById(int id) {
         productRepository.removeById(id);
     }
 
-    public void removeAll() {
-        productRepository.removeAll();
-    }
-
-    public Product findById(int id) {
-        return productRepository.findById(id);
-    }
-
     public Product[] searchByText(String text) {
-        int count_matches = 0;
+        Product[] result = new Product[0];
         for (Product product : productRepository.findAll()) {
             if (matches(product, text)) {
-                count_matches = count_matches + 1;
-            }
-        }
-        Product[] result = new Product[count_matches];
-        int idx = 0;
-        for (Product product : productRepository.findAll()) {
-            if (matches(product, text)) {
-                result[idx] = product;
-                idx = idx + 1;
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = product;
+                result = tmp;
             }
         }
         return result;
     }
 
     public boolean matches(Product product, String search) {
-
         if (product instanceof Book) {
-
             Book book = (Book) product;
             if (book.getName().equalsIgnoreCase(search)) {
                 return true;
@@ -67,9 +52,7 @@ public class ProductManager {
             if (book.getAuthor().equalsIgnoreCase(search)) {
                 return true;
             }
-            return false;
         } else {
-
             Smartphone phone = (Smartphone) product;
             if (phone.getName().equalsIgnoreCase(search)) {
                 return true;
@@ -77,8 +60,9 @@ public class ProductManager {
             if (phone.getCompany().equalsIgnoreCase(search)) {
                 return true;
             }
-            return false;
         }
-    }
+        return false;
+       }
+
 
 }

@@ -10,9 +10,10 @@ import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 class ProductManagerTest {
+
     private ProductRepository repository = new ProductRepository();
     private ProductManager manager = new ProductManager(repository);
-    private Book[] list_of_books = new Book[]{
+    private Book[] listOfBooks = new Book[]{
             new Book(1, "The rich boy", 1010, "F.S.Fitzgerald"),
             new Book(2, "Three man on the bummel", 900, "Jerome K.Jerome"),
             new Book(3, "Three man in a boat", 890, "Jerome K.Jerome"),
@@ -26,7 +27,7 @@ class ProductManagerTest {
             new Book(11, "Life of the Mississippi", 350, "Mark Twain")
     };
 
-    private Smartphone[] list_of_phones = new Smartphone[]{
+    private Smartphone[] listOfPhones = new Smartphone[]{
             new Smartphone(12, "Galaxy 10", 25000, "Samsung"),
             new Smartphone(13, "Galaxy 8", 20000, "Samsung"),
             new Smartphone(14, "Galaxy 9", 21000, "Samsung"),
@@ -41,12 +42,12 @@ class ProductManagerTest {
     public void addAllItemsToRepository() {
 
         // add all books to repository
-        for (int i = 0; i < list_of_books.length; i++) {
-            manager.add(list_of_books[i]);
+        for (int i = 0; i < listOfBooks.length; i++) {
+            manager.add(listOfBooks[i]);
         }
         // add all phones to repository
-        for (int i = 0; i < list_of_phones.length; i++) {
-            manager.add(list_of_phones[i]);
+        for (int i = 0; i < listOfPhones.length; i++) {
+            manager.add(listOfPhones[i]);
         }
 
     }
@@ -55,74 +56,61 @@ class ProductManagerTest {
     public void shouldAddAllProductsToRepository() {
 
         Product[] actual = repository.findAll();
-        Book[] actualBook = new Book[list_of_books.length];
-        Smartphone[] actualPhone = new Smartphone[list_of_phones.length];
-        int j = 0;
-        int k = 0;
-
-        // why do you need k ?
-        for (int i = 0; i < actual.length; i++) {
-            if (actual[i] instanceof Book) {
-                actualBook[j] = (Book) actual[i];
-                j++;
-            } else if (actual[i] instanceof Smartphone) {
-                actualPhone[k] = (Smartphone) actual[i];
-                k++;
-            }
-        }
-        assertArrayEquals(list_of_books, actualBook);
+        int actualCount = actual.length;
+        int expectedCount = 18;
+        assertEquals(expectedCount, actualCount);
 
     }
 
     @Test
     public void shouldSearchByAutor() {
         String text = "Mark Twain";
-        Product[] expected = new Book[] {
-            new Book(7, "The adventures of Tom Soyer", 1200, "Mark Twain"),
-            new Book(10, "The adventures of Heckleberry Finn", 120, "Mark Twain"),
-            new Book(11, "Life of the Mississippi", 350, "Mark Twain")
+        Product[] expected = new Book[]{
+                new Book(7, "The adventures of Tom Soyer", 1200, "Mark Twain"),
+                new Book(10, "The adventures of Heckleberry Finn", 120, "Mark Twain"),
+                new Book(11, "Life of the Mississippi", 350, "Mark Twain")
         };
-        Product[] found_products =  manager.searchByText(text);
-        assertArrayEquals(expected, found_products);
+        Product[] foundProducts = manager.searchByText(text);
+        assertArrayEquals(expected, foundProducts);
     }
 
     @Test
     public void shouldSearchByName() {
         String text = "Winter dreams";
-        Product[] expected = new Book[] {
-                new Book(4, "Winter dreams", 1000, "F.S.Fitzgerald")        };
-        Product[] found_products =  manager.searchByText(text);
-        assertArrayEquals(expected, found_products);
+        Product[] expected = new Book[]{
+                new Book(4, "Winter dreams", 1000, "F.S.Fitzgerald")};
+        Product[] foundProducts = manager.searchByText(text);
+        assertArrayEquals(expected, foundProducts);
     }
 
 
     @Test
     public void shouldSearchByNamePhone() {
         String text = "Galaxy 8";
-        Product[] expected = new Smartphone[] {
+        Product[] expected = new Smartphone[]{
                 new Smartphone(13, "Galaxy 8", 20000, "Samsung")};
-        Product[] found_products =  manager.searchByText(text);
-        assertArrayEquals(expected, found_products);
+        Product[] foundProducts = manager.searchByText(text);
+        assertArrayEquals(expected, foundProducts);
     }
 
 
     @Test
     public void shouldSearchByCompany() {
         String text = "Samsung";
-        Product[] expected = new Smartphone[] {
+        Product[] expected = new Smartphone[]{
                 new Smartphone(12, "Galaxy 10", 25000, "Samsung"),
                 new Smartphone(13, "Galaxy 8", 20000, "Samsung"),
                 new Smartphone(14, "Galaxy 9", 21000, "Samsung")};
-       Product[] found_products =  manager.searchByText(text);
-        assertArrayEquals(expected, found_products);
+        Product[] foundProducts = manager.searchByText(text);
+        assertArrayEquals(expected, foundProducts);
     }
 
     @Test
     public void shouldReturnNullIfNotExistSearchText() {
         String text = "Barby";
         Product[] expected = new Product[0];
-        Product[] found_products =  manager.searchByText(text);
-        assertArrayEquals(expected, found_products);
+        Product[] foundProducts = manager.searchByText(text);
+        assertArrayEquals(expected, foundProducts);
     }
 
 }
