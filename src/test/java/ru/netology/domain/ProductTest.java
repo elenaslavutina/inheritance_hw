@@ -18,13 +18,13 @@ class ProductTest {
             new Product(9, "White Fang", 670),
             new Product(10, "The adventures of Heckleberry Finn", 120),
             new Product(11, "Life of the Mississippi", 350),
-            new Product(1, "Galaxy 10", 25000),
-            new Product(1, "Galaxy 8", 20000),
-            new Product(1, "Galaxy 10", 21000),
-            new Product(1, "iPhone 6", 25000),
-            new Product(1, "iPhone 7", 25000),
-            new Product(1, "12345", 15000),
-            new Product(1, "123410", 13000),
+            new Product(12, "Galaxy 10", 25000),
+            new Product(13, "Galaxy 8", 20000),
+            new Product(14, "Galaxy 10", 21000),
+            new Product(15, "iPhone 6", 25000),
+            new Product(16, "iPhone 7", 25000),
+            new Product(17, "12345", 15000),
+            new Product(18, "123410", 13000),
 
     };
 

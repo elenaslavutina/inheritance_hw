@@ -27,13 +27,13 @@ class ProductManagerTest {
     };
 
     private Smartphone[] list_of_phones = new Smartphone[]{
-            new Smartphone(1, "Galaxy 10", 25000, "Samsung"),
-            new Smartphone(1, "Galaxy 8", 20000, "Samsung"),
-            new Smartphone(1, "Galaxy 9", 21000, "Samsung"),
-            new Smartphone(1, "iPhone 6", 25000, "iPhone"),
-            new Smartphone(1, "iPhone 7", 25000, "iPhone"),
-            new Smartphone(1, "12345", 15000, "Huawei"),
-            new Smartphone(1, "123410", 13000, "Huawei"),
+            new Smartphone(12, "Galaxy 10", 25000, "Samsung"),
+            new Smartphone(13, "Galaxy 8", 20000, "Samsung"),
+            new Smartphone(14, "Galaxy 9", 21000, "Samsung"),
+            new Smartphone(15, "iPhone 6", 25000, "iPhone"),
+            new Smartphone(16, "iPhone 7", 25000, "iPhone"),
+            new Smartphone(17, "12345", 15000, "Huawei"),
+            new Smartphone(18, "123410", 13000, "Huawei"),
 
     };
 

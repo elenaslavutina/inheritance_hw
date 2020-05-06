@@ -8,12 +8,12 @@ class SmartphoneTest {
 
     private Smartphone[] list_of_phones = new Smartphone[]{
             new Smartphone(1, "Galaxy 10", 25000, "Samsung"),
-            new Smartphone(1, "Galaxy 8", 20000, "Samsung"),
-            new Smartphone(1, "Galaxy 9", 21000, "Samsung"),
-            new Smartphone(1, "iPhone 6", 25000, "iPhone"),
-            new Smartphone(1, "iPhone 7", 25000, "iPhone"),
-            new Smartphone(1, "12345", 15000, "Huawei"),
-            new Smartphone(1, "123410", 13000, "Huawei"),
+            new Smartphone(2, "Galaxy 8", 20000, "Samsung"),
+            new Smartphone(3, "Galaxy 9", 21000, "Samsung"),
+            new Smartphone(4, "iPhone 6", 25000, "iPhone"),
+            new Smartphone(5, "iPhone 7", 25000, "iPhone"),
+            new Smartphone(6, "12345", 15000, "Huawei"),
+            new Smartphone(7, "123410", 13000, "Huawei"),
 
     };
 
