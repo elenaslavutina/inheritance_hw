@@ -14,9 +14,9 @@ class ProductManagerTest {
     private ProductManager manager = new ProductManager(repository);
     private Book[] list_of_books = new Book[]{
             new Book(1, "The rich boy", 1010, "F.S.Fitzgerald"),
-            new Book(2, "Three man on the bummel ", 900, "Jerome K.Jerome"),
-            new Book(3, "Three man in a boat ", 890, "Jerome K.Jerome"),
-            new Book(4, "Winter dreams ", 1000, "F.S.Fitzgerald"),
+            new Book(2, "Three man on the bummel", 900, "Jerome K.Jerome"),
+            new Book(3, "Three man in a boat", 890, "Jerome K.Jerome"),
+            new Book(4, "Winter dreams", 1000, "F.S.Fitzgerald"),
             new Book(5, "The great Gatsby", 900, "F.S.Fitzgerald"),
             new Book(6, "Ninteen eighty-four", 897, "Orwell"),
             new Book(7, "The adventures of Tom Soyer", 1200, "Mark Twain"),
@@ -27,13 +27,13 @@ class ProductManagerTest {
     };
 
     private Smartphone[] list_of_phones = new Smartphone[]{
-            new Smartphone(1, "Galaxy 10", 25000, "Samsung"),
-            new Smartphone(1, "Galaxy 8", 20000, "Samsung"),
-            new Smartphone(1, "Galaxy 9", 21000, "Samsung"),
-            new Smartphone(1, "iPhone 6", 25000, "iPhone"),
-            new Smartphone(1, "iPhone 7", 25000, "iPhone"),
-            new Smartphone(1, "12345", 15000, "Huawei"),
-            new Smartphone(1, "123410", 13000, "Huawei"),
+            new Smartphone(12, "Galaxy 10", 25000, "Samsung"),
+            new Smartphone(13, "Galaxy 8", 20000, "Samsung"),
+            new Smartphone(14, "Galaxy 9", 21000, "Samsung"),
+            new Smartphone(15, "iPhone 6", 25000, "iPhone"),
+            new Smartphone(16, "iPhone 7", 25000, "iPhone"),
+            new Smartphone(17, "12345", 15000, "Huawei"),
+            new Smartphone(18, "123410", 13000, "Huawei"),
 
     };
 
@@ -75,24 +75,54 @@ class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchByText() {
-
+    public void shouldSearchByAutor() {
+        String text = "Mark Twain";
         Product[] expected = new Book[] {
             new Book(7, "The adventures of Tom Soyer", 1200, "Mark Twain"),
             new Book(10, "The adventures of Heckleberry Finn", 120, "Mark Twain"),
             new Book(11, "Life of the Mississippi", 350, "Mark Twain")
         };
+        Product[] found_products =  manager.searchByText(text);
+        assertArrayEquals(expected, found_products);
+    }
 
-        Product[] found_products =  manager.searchByText("Mark Twain");
-
-        for (Product product_item : found_products) {
-            System.out.println(product_item.getName());
-            System.out.println(product_item.getPrice());
-        }
-
+    @Test
+    public void shouldSearchByName() {
+        String text = "Winter dreams";
+        Product[] expected = new Book[] {
+                new Book(4, "Winter dreams", 1000, "F.S.Fitzgerald")        };
+        Product[] found_products =  manager.searchByText(text);
         assertArrayEquals(expected, found_products);
     }
 
 
+    @Test
+    public void shouldSearchByNamePhone() {
+        String text = "Galaxy 8";
+        Product[] expected = new Smartphone[] {
+                new Smartphone(13, "Galaxy 8", 20000, "Samsung")};
+        Product[] found_products =  manager.searchByText(text);
+        assertArrayEquals(expected, found_products);
+    }
+
+
+    @Test
+    public void shouldSearchByCompany() {
+        String text = "Samsung";
+        Product[] expected = new Smartphone[] {
+                new Smartphone(12, "Galaxy 10", 25000, "Samsung"),
+                new Smartphone(13, "Galaxy 8", 20000, "Samsung"),
+                new Smartphone(14, "Galaxy 9", 21000, "Samsung")};
+       Product[] found_products =  manager.searchByText(text);
+        assertArrayEquals(expected, found_products);
+    }
+
+    @Test
+    public void shouldReturnNullIfNotExistSearchText() {
+        String text = "Barby";
+        Product[] expected = new Product[0];
+        Product[] found_products =  manager.searchByText(text);
+        assertArrayEquals(expected, found_products);
+    }
 
 }

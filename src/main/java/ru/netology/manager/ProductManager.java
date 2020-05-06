@@ -7,7 +7,6 @@ import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
     private ProductRepository productRepository = new ProductRepository();
-//    private int maxProduct = 10;
 
     public ProductManager(ProductRepository repository) {
         this.productRepository = repository;
@@ -40,17 +39,13 @@ public class ProductManager {
     }
 
     public Product[] searchByText(String text) {
-
         int count_matches = 0;
-
         for (Product product : productRepository.findAll()) {
             if (matches(product, text)) {
                 count_matches = count_matches + 1;
             }
         }
-
         Product[] result = new Product[count_matches];
-
         int idx = 0;
         for (Product product : productRepository.findAll()) {
             if (matches(product, text)) {
@@ -58,7 +53,6 @@ public class ProductManager {
                 idx = idx + 1;
             }
         }
-
         return result;
     }
 
@@ -74,7 +68,7 @@ public class ProductManager {
                 return true;
             }
             return false;
-        } else if (product instanceof Smartphone) {
+        } else {
 
             Smartphone phone = (Smartphone) product;
             if (phone.getName().equalsIgnoreCase(search)) {
@@ -84,8 +78,7 @@ public class ProductManager {
                 return true;
             }
             return false;
-        } else
-            return false;
+        }
     }
 
 }
