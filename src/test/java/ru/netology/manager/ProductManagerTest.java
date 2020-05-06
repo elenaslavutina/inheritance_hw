@@ -12,7 +12,7 @@ import ru.netology.repository.ProductRepository;
 class ProductManagerTest {
     private ProductRepository repository = new ProductRepository();
     private ProductManager manager = new ProductManager(repository);
-    private Book[] list_of_books = new Book[]{
+    private Book[] listOfBooks = new Book[]{
             new Book(1, "The rich boy", 1010, "F.S.Fitzgerald"),
             new Book(2, "Three man on the bummel ", 900, "Jerome K.Jerome"),
             new Book(3, "Three man in a boat ", 890, "Jerome K.Jerome"),
@@ -26,7 +26,7 @@ class ProductManagerTest {
             new Book(11, "Life of the Mississippi", 350, "Mark Twain")
     };
 
-    private Smartphone[] list_of_phones = new Smartphone[]{
+    private Smartphone[] listOfPhones = new Smartphone[]{
             new Smartphone(12, "Galaxy 10", 25000, "Samsung"),
             new Smartphone(13, "Galaxy 8", 20000, "Samsung"),
             new Smartphone(14, "Galaxy 9", 21000, "Samsung"),
@@ -41,12 +41,12 @@ class ProductManagerTest {
     public void addAllItemsToRepository() {
 
         // add all books to repository
-        for (int i = 0; i < list_of_books.length; i++) {
-            manager.add(list_of_books[i]);
+        for (int i = 0; i < listOfBooks.length; i++) {
+            manager.add(listOfBooks[i]);
         }
         // add all phones to repository
-        for (int i = 0; i < list_of_phones.length; i++) {
-            manager.add(list_of_phones[i]);
+        for (int i = 0; i < listOfPhones.length; i++) {
+            manager.add(listOfPhones[i]);
         }
 
     }
@@ -55,8 +55,8 @@ class ProductManagerTest {
     public void shouldSortProductsByClass() {
 
         Product[] actual = repository.findAll();
-        Book[] actualBook = new Book[list_of_books.length];
-        Smartphone[] actualPhone = new Smartphone[list_of_phones.length];
+        Book[] actualBook = new Book[listOfBooks.length];
+        Smartphone[] actualPhone = new Smartphone[listOfPhones.length];
         int j = 0;
         int k = 0;
 
@@ -70,7 +70,7 @@ class ProductManagerTest {
                 k++;
             }
         }
-        assertArrayEquals(list_of_books, actualBook);
+        assertArrayEquals(listOfBooks, actualBook);
 
     }
 
@@ -83,8 +83,8 @@ class ProductManagerTest {
             new Book(11, "Life of the Mississippi", 350, "Mark Twain")
         };
 
-        Product[] found_products =  manager.searchByText("Mark Twain");
-        assertArrayEquals(expected, found_products);
+        Product[] foundProducts =  manager.searchByText("Mark Twain");
+        assertArrayEquals(expected, foundProducts);
     }
 
 }

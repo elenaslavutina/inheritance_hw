@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SmartphoneTest {
 
-    private Smartphone[] list_of_phones = new Smartphone[]{
+    private Smartphone[] listOfPhones = new Smartphone[]{
             new Smartphone(1, "Galaxy 10", 25000, "Samsung"),
             new Smartphone(2, "Galaxy 8", 20000, "Samsung"),
             new Smartphone(3, "Galaxy 9", 21000, "Samsung"),
@@ -22,7 +22,7 @@ class SmartphoneTest {
         String text = "Samsung";
         int count = 3;
         int index = 0;
-        for (Smartphone phone : list_of_phones) {
+        for (Smartphone phone : listOfPhones) {
             if (phone.matches(text)) index++;
         }
         ;
@@ -34,7 +34,7 @@ class SmartphoneTest {
         String text = "Galaxy 9";
         int count = 1;
         int index = 0;
-        for (Smartphone phone : list_of_phones) {
+        for (Smartphone phone : listOfPhones) {
             if (phone.matches(text)) index++;
         }
         ;
@@ -46,7 +46,7 @@ class SmartphoneTest {
         String text = "Nokia";
         int count = 0;
         int index = 0;
-        for (Smartphone phone : list_of_phones) {
+        for (Smartphone phone : listOfPhones) {
             if (phone.matches(text)) index++;
         }
         ;

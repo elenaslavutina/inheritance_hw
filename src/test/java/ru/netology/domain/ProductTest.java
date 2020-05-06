@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
 
-    private Product[] list_of_products = new Product[]{
+    private Product[] listOfProducts = new Product[]{
             new Product(1, "The rich boy", 1010),
             new Product(2, "Three man on the bummel ", 900),
             new Product(3, "Three man in a boat ", 890),
@@ -40,7 +40,7 @@ class ProductTest {
         String text = "The Law of Life";
         int count = 2;
         int index = 0;
-        for (Product product : list_of_products) {
+        for (Product product : listOfProducts) {
             if (product.matches(text)) index++;
         }
         ;
@@ -52,7 +52,7 @@ class ProductTest {
         String text = "Dandelion wine";
         int count = 0;
         int index = 0;
-        for (Product product : list_of_products) {
+        for (Product product : listOfProducts) {
             if (product.matches(text)) index++;
         }
         ;

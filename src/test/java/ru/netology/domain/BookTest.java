@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
 
-    private Book[] list_of_books2 = new Book[]{
+    private Book[] listOfBooks2 = new Book[]{
             new Book(1, "The rich boy", 1010, "F.S.Fitzgerald"),
             new Book(2, "Three man on the bummel", 900, "Jerome K.Jerome"),
             new Book(3, "Three man in a boat", 890, "Jerome K.Jerome"),
@@ -28,7 +28,7 @@ class BookTest {
         String text = "Jerome K.Jerome";
         int count = 2;
         int index = 0;
-        for (Book book : list_of_books2) {
+        for (Book book : listOfBooks2) {
             if (book.matches(text)) index++;
         }
         ;
@@ -40,7 +40,7 @@ class BookTest {
         String text = "Three man on the bummel";
         int count = 1;
         int index = 0;
-        for (Book book : list_of_books2) {
+        for (Book book : listOfBooks2) {
             if (book.matches(text)) index++;
         }
         ;
@@ -53,7 +53,7 @@ class BookTest {
         String text = "Jules Verne";
         int count = 0;
         int index = 0;
-        for (Book book : list_of_books2) {
+        for (Book book : listOfBooks2) {
             if (book.matches(text)) index++;
         }
         ;
